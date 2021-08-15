@@ -1,0 +1,139 @@
+React is JS library to build UI.
+UI is managed by state.
+
+COMPONNETS=> The COMPONNETS in react are independant , isolated and reusable.
+2types- 1. class based components 2. function based components
+
+//BABEL
+In react the code is written in JSX. 
+JSX is the mixture of HTML , CSS,JS.
+Browser can't understand JSX and can only understand js
+
+babel is medium to convert jsx=>js
+
+Functional components Syntax
+function hello(){
+    return(
+        //jsx code
+    )
+}
+
+//Render=> takes the components on ui , reflect changes
+To attatch the comp or call fnc we use Render
+ReactDOM.render(comp whose material is needed , where to attatch);
+eg:-ReactDOM.render(<Hellos/>,document.getElementById('root')); => hellos ka data id pe attatch krdo
+
+React.Fragment is used to wrap the multiple items and render it.
+
+in react we can only use 
+?=>ternary operator =====|
+map fnc                  | => these restrictions are only for return block
+no loops         ========|
+
+Props send data from parent to child
+passed to arguement of a function
+
+//static ui use =>function components
+//dynamic => use class components because they have state
+
+//STATE
+It enables the dynamic nature.
+It is built in react OBJECT used to contain data or info about components
+Whenever state changes the components re render themselves
+
+ this.state.count= this.state.count+1; never ever change the state of react  directly
+ this.setState => use this to change the state 
+
+super();//isse hume this milta h class ka
+
+
+//SEARCHING
+searching temporary operation
+jo ki har render pe perform 
+state capture jese ip box me chng state set render again
+text type basis pe search 
+new array will be made that is initially empty
+To check we use includes method
+
+The includes() method determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+It return a  Boolean which is true if the value searchElement is found within the array (or the part of the array indicated by the index fromIndex, if specified)
+//Syntax:- includes(searchElement, fromIndex)
+
+
+//SORTING
+We call the sort function on an array.
+It return a new array. And no copy is made
+It first convers to the string then compares the values or sort.
+Give a compare function.
+It takes 2 arguements (a,b)
+
+If compareFunction(a, b) returns a value > than 0, sort b before a.
+If compareFunction(a, b) returns a value ≤ 0, leave a and b in the same order.
+
+//slice method
+
+The slice() method returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included) where start and end represent the index of items in that array. The original array will not be modified.
+
+/***********************life cycle methods***********************/
+3 phases
+1.Mounting phase 
+2.update
+3.Unmount
+MOUNTING:- CONSTRUCTOR => RENDER => COMPONENTDIDMOUNT
+UPDATE:- RENDER=> COMPONENTDIDUPDATE (only render as update time state change and we know when state changes it renders again)
+UNMOUNT :- COMPONENTWILLUNMOUNT
+
+What do we do in ComponentDidMount?
+We create side effects.Side Effects basically are network requests on Browser.
+componentDidMount() is invoked immediately after a component is mounted (inserted into the tree).
+
+Axios:- Promisified library(Promise based HTTP client for the browser and node.js)
+installation:- npm i axios
+
+/***********************Routing***********************/
+
+ A <Switch> looks through its children <Route>s and
+ renders the first one that matches the current URL.
+ exact keyword make the component match exactly to path and then only renders it.
+
+ <Link>
+ Provides declarative, accessible navigation around your application.
+<Link to="/about"> basically we write ki link kha pe => link to this path
+
+ /***********************HOOKS***********************/
+ Hooks:- Hooks are the functions that let you hook into the react state & lifecycle methods from functional components..
+ Hooks don't work in class components.
+ Called inside a function
+It let's functional components to make their state and lifecycles.
+It lets us add local state to React function components 
+
+Need?
+1.Escape boiler plate code ffrom class components.
+2.No worries to handle this.
+3.Seperation of logics.
+ 
+useState:- It is a Hook.
+useState returns a pair(Array): the current state value and a function that lets you update it.
+Function is  similar to [this.setState] in a class.
+The only argument to useState is the initial state.
+
+in class component 
+this.state={
+    count =0; // ye thi vha initial value that is now passed as an arguement in use state as its initial state.
+
+}
+this.setState({
+   count: updated value //this updation of state is done by the functiion
+    });
+
+Unlike with classes, the state doesn’t have to be an object.
+//update state
+To updte the state instead of using count: this.state.count + 1  we use 
+the function passed to update the state 
+  setCount(count-1);
+
+//Reading state
+When we want to display the current count in a class, we read this.state.count but here we directly write {function name}
+
+React will then re-render the function component, passing the new count value to it.
+//EVERYTIME STATE WILL CHANGE THE WHOLE FUNCTION WILL RE RENDER.
