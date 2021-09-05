@@ -79,13 +79,17 @@ The slice() method returns a shallow copy of a portion of an array into a new ar
 1.Mounting phase 
 2.update
 3.Unmount
-MOUNTING:- CONSTRUCTOR => RENDER => COMPONENTDIDMOUNT
-UPDATE:- RENDER=> COMPONENTDIDUPDATE (only render as update time state change and we know when state changes it renders again)
-UNMOUNT :- COMPONENTWILLUNMOUNT
+MOUNTING:- CONSTRUCTOR => RENDER => COMPONENTDIDMOUNT (First component gets mount and then this method is run) (Mounting is done only once on particular component)
+UPDATE:- RENDER=> COMPONENTDIDUPDATE (First component gets mount and then this method is run) (Rendering occurs multiple times on particular component)
+UNMOUNT :- COMPONENTWILLUNMOUNT (First this method is run and then component gets unmount) (Unmounting is done only once on particular component)
 
 What do we do in ComponentDidMount?
 We create side effects.Side Effects basically are network requests on Browser.
 componentDidMount() is invoked immediately after a component is mounted (inserted into the tree).
+
+* Getting data from backend in the constructor is not a quick process as compared when data is in local storage, therefore the react app becomes slow
+  so to avoid it, we do the fetching of data from backend in the componentDidMount() function since it runs after the constructor and render function who loads the 
+  UI of the app, and then CdidMOUNT() appends the data into the app. Thus handling the side effects of the app. 
 
 Axios:- Promisified library(Promise based HTTP client for the browser and node.js)
 installation:- npm i axios
@@ -112,7 +116,7 @@ Need?
 2.No worries to handle this.
 3.Seperation of logics.
  
-useState:- It is a Hook.
+useState:- It is a Hook that let us add state to functional components.
 useState returns a pair(Array): the current state value and a function that lets you update it.
 Function is  similar to [this.setState] in a class.
 The only argument to useState is the initial state.
